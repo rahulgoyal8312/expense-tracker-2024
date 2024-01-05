@@ -1,12 +1,40 @@
+import { useState } from "react";
 import ExpenseListComponent from "./ExpenseList";
 import SidebarComponent from "./Sidebar";
 
 const ExpenseComponent = () => {
+    const [activeItem, setActiveItem] = useState(0);
+
+    const handleActiveListItem = (index) => {
+        setActiveItem(index);
+    }
+
     return (
         <div className="flexbox">
-            <SidebarComponent/>
+            <SidebarComponent
+                activeListItem={activeItem}
+                updateActiveListItem={(params) => {
+                    handleActiveListItem(params);
+                }}
+            />
             <div className="layout-container">
-                <ExpenseListComponent/>
+                {
+                    activeItem === 0 ?
+                        <ExpenseListComponent />
+                        :
+                        (
+                            activeItem === 1
+                                ?
+                                "Add Expense Component"
+                                :
+                                (
+                                    activeItem === 2
+                                        ?
+                                        "Analytics Page" :
+                                        ""
+                                )
+                        )
+                }
             </div>
         </div>
     );

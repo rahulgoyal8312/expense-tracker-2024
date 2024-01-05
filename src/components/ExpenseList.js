@@ -1,6 +1,34 @@
-const ExpenseListComponent = () => {
-    return (
+import ExpenseListItemComponent from "./ExpenseListItem";
 
+const ExpenseListComponent = () => {
+    const data = [
+        {
+            id: 1,
+            title: "Expense 1",
+            amount: 2000,
+            type: "Credit",
+            month: "January",
+            day: 2
+        },
+        {
+            id: 2,
+            title: "Expense 2",
+            amount: 500,
+            type: "Debit",
+            month: "January",
+            day: 4
+        },
+        {
+            id: 3,
+            title: "Expense 3",
+            amount: 20000,
+            type: "Credit",
+            month: "January",
+            day: 1
+        }
+    ];
+
+    return (
         <div className="layout-container__wrapper">
             <div className="flexbox flexbox-justify-between flexbox-align-baseline">
                 <h3>Expenses</h3>
@@ -9,69 +37,15 @@ const ExpenseListComponent = () => {
             <hr />
             <div className="layout-container__expenses">
                 <ul>
-                    <li className="flexbox flexbox-justify-between">
-                        <div className="flexbox">
-                            <div className="flexbox flexbox-column flexbox-align-center date">
-                                <div className="month">January</div>
-                                <div className="day">1</div>
-                            </div>
-                            <div className="flexbox flexbox-align-center">
-                                <h3 className="title">Expense 2</h3>
-                                <span className="type-pill">Credit</span>
-                            </div>
-                        </div>
-                        <div className="flexbox flexbox-align-center">
-                            <div className="pill">2000 INR</div>
-                            <button className="actions">
-                                <span className="material-icons edit">edit</span>
-                            </button>
-                            <button className="actions">
-                                <span className="material-icons delete">delete</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="flexbox flexbox-justify-between">
-                        <div className="flexbox">
-                            <div className="flexbox flexbox-column flexbox-align-center date">
-                                <div className="month">January</div>
-                                <div className="day">2</div>
-                            </div>
-                            <div className="flexbox flexbox-align-center">
-                                <h3 className="title">Expense 3</h3>
-                                <span className="type-pill">Debit</span>
-                            </div>
-                        </div>
-                        <div className="flexbox flexbox-align-center">
-                            <div className="pill">340 INR</div>
-                            <button className="actions">
-                                <span className="material-icons edit">edit</span>
-                            </button>
-                            <button className="actions">
-                                <span className="material-icons delete">delete</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="flexbox flexbox-justify-between">
-                        <div className="flexbox">
-                            <div className="flexbox flexbox-column flexbox-align-center date">
-                                <div className="month">January</div>
-                                <div className="day">3</div>
-                            </div>
-                            <div className="flexbox flexbox-align-center">
-                                <h3 className="title">Expense 1</h3>
-                                <span className="type-pill">Debit</span>
-                            </div>
-                        </div>
-                        <div className="flexbox flexbox-align-center">
-                            <div className="pill">890 INR</div>
-                            <button className="actions">
-                                <span className="material-icons edit">edit</span>
-                            </button>
-                            <button className="actions">
-                                <span className="material-icons delete">delete</span>
-                            </button>
-                        </div>
-                    </li>
+                    <ExpenseListItemComponent
+                        data={data[0]}
+                    />
+                    <ExpenseListItemComponent
+                        data={data[1]}
+                    />
+                    <ExpenseListItemComponent
+                        data={data[2]}
+                    />
                 </ul>
             </div>
         </div>
