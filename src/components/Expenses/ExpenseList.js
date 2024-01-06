@@ -37,7 +37,7 @@ const ExpenseListComponent = () => {
             <hr />
             <div className="layout-container__expenses">
                 <ul>
-                    <ExpenseListItemComponent
+                    {/* <ExpenseListItemComponent
                         data={data[0]}
                     />
                     <ExpenseListItemComponent
@@ -45,7 +45,17 @@ const ExpenseListComponent = () => {
                     />
                     <ExpenseListItemComponent
                         data={data[2]}
-                    />
+                    /> */}
+                    {
+                        data.map((item, index) => {
+                            return (
+                                <ExpenseListItemComponent
+                                    key={item.id}
+                                    data={item}
+                                />
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import ExpenseComponent from "./components";
+import ExpenseComponent from "./layout";
 
 function App() {
   return <ExpenseComponent/>;

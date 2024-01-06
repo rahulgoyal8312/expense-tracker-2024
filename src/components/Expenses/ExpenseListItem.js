@@ -13,10 +13,10 @@ const ExpenseListItemComponent = ({ data, ...rest }) => {
             </div>
             <div className="flexbox flexbox-align-center">
                 <div className="pill">{data.amount} INR</div>
-                <button className="actions">
+                <button className="actions" onClick={() => alert("Edit this Item")}>
                     <span className="material-icons edit">edit</span>
                 </button>
-                <button className="actions">
+                <button className="actions" onClick={() => alert("Delete this Item")}>
                     <span className="material-icons delete">delete</span>
                 </button>
             </div>

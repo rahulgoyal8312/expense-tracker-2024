@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ExpenseListComponent from "./ExpenseList";
-import SidebarComponent from "./Sidebar";
+import ExpenseListComponent from "../components/Expenses/ExpenseList";
+import SidebarComponent from "../components/Sidebar/Sidebar";
 
 const ExpenseComponent = () => {
     const [activeItem, setActiveItem] = useState(0);
