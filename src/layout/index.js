@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ExpenseListComponent from "../components/Expenses/ExpenseList";
 import SidebarComponent from "../components/Sidebar/Sidebar";
+import ExpenseFormComponent from "../components/Expenses/ExpenseForm";
 
 const ExpenseComponent = () => {
     const [activeItem, setActiveItem] = useState(0);
@@ -25,7 +26,7 @@ const ExpenseComponent = () => {
                         (
                             activeItem === 1
                                 ?
-                                "Add Expense Component"
+                                <ExpenseFormComponent/>
                                 :
                                 (
                                     activeItem === 2
