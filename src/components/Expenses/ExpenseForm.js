@@ -33,6 +33,7 @@ const ExpenseFormComponent = () => {
             amount,
             type
         })
+        alert("Form submitted, store the data!")
     }
     
     return (
@@ -57,7 +58,7 @@ const ExpenseFormComponent = () => {
                         className="form-textarea" placeholder="Enter Description" rows="4" onChange={updateDescription}
                         value={description}
                         >
-                        </textarea>``
+                        </textarea>
                 </div>
                 <div className="form-wrap">
                     <label htmlFor="amount">Amount</label>
