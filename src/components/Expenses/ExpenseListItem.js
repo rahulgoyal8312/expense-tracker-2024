@@ -1,10 +1,16 @@
+const MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
 const ExpenseListItemComponent = ({ data, ...rest }) => {
+    const date = new Date(data.date);
+    const month = date.getMonth();
+    const day = date.getDate();
+
     return (
         <li className="flexbox flexbox-justify-between">
             <div className="flexbox">
                 <div className="flexbox flexbox-column flexbox-align-center date">
-                    <div className="month">{data.month}</div>
-                    <div className="day">{data.day}</div>
+                    <div className="month">{MONTH[month]}</div>
+                    <div className="day">{day}</div>
                 </div>
                 <div className="flexbox flexbox-align-center">
                     <h3 className="title">{data.title}</h3>
