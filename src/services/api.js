@@ -5,3 +5,7 @@ export const fetchExpenses = async () => {
 }
 
 // n number of export statements
+
+export const fetchExpensesById = async (id) => {
+    // add code
+}

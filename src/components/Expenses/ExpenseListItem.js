@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 const ExpenseListItemComponent = ({ data, ...rest }) => {
+    const navigate = useNavigate();
     const date = new Date(data.date);
     const month = date.getMonth();
     const day = date.getDate();
@@ -19,7 +22,7 @@ const ExpenseListItemComponent = ({ data, ...rest }) => {
             </div>
             <div className="flexbox flexbox-align-center">
                 <div className="pill">{data.amount} INR</div>
-                <button className="actions" onClick={() => alert("Edit this Item")}>
+                <button className="actions" onClick={() => navigate(`/edit-expense/${data.id}`)}>
                     <span className="material-icons edit">edit</span>
                 </button>
                 <button className="actions" onClick={() => alert("Delete this Item")}>

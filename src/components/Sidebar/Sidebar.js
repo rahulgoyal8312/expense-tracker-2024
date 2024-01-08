@@ -10,17 +10,20 @@ const SidebarComponent = ({
         {
             id: 0,
             title: "Expenses",
-            icon: "insights"
+            icon: "insights",
+            path: "/"
         },
         {
             id: 1,
             title: "Add Expense",
-            icon: "note_add"
+            icon: "note_add",
+            path: "/add-expense"
         },
         {
             id: 2,
             title: "Analytics",
-            icon: "analytics"
+            icon: "analytics",
+            path: "/analytics"
         }
     ];
 

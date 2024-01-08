@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-const ExpenseFormComponent = () => {
+const ExpenseFormComponent = ({
+    operation
+}) => {
+
+    const params = useParams();
+    console.log("Expense ID: ", params.id);
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState(1000);
@@ -35,11 +43,15 @@ const ExpenseFormComponent = () => {
         })
         alert("Form submitted, store the data!")
     }
+
+    // fetch expense by ID if ID exist and operation is EDIT
+    // set the input fields with the incoming values
+    useEffect(() => {}, []);
     
     return (
         <div className="layout-container__wrapper">
             <div className="heading">
-                <h3>ADD Expense Log</h3>
+                <h3>{operation} Expense Log</h3>
             </div>
             <hr />
             {/* Assignment to create a reset function */}
@@ -90,7 +102,7 @@ const ExpenseFormComponent = () => {
                     </div>
                 </div>
                 <div className="flexbox flexbox-reverse">
-                    <button className="btn" type="submit"><span>ADD Expense</span></button>
+                    <button className="btn" type="submit"><span>{operation} Expense</span></button>
                     <button className="btn mr-5" type="reset"><span>Clear</span></button>
                 </div>
             </form>

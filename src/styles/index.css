@@ -68,12 +68,12 @@ body {
     padding-left: 20px;
 }
 
-.sidebar-container__list ul li a.active {
+.sidebar-container__list ul li a.active-item {
     background-color: var(--theme-color);
     color: var(--color-white);
 }
 
-.sidebar-container__list ul li a.active span {
+.sidebar-container__list ul li a.active-item span {
     color: inherit;
 }
 
