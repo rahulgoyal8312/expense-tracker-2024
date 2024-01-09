@@ -4,6 +4,7 @@ import { fetchExpenses } from "./../../services/api"
 
 const ExpenseListComponent = () => {
     const [data, setData] = useState([]);
+    const [total, setTotal] = useState(0);
     // const data = [
     //     {
     //         id: 1,
@@ -41,6 +42,18 @@ const ExpenseListComponent = () => {
 
         fetchExpenses().then(response => {
             setData(response);
+            let initalValue = 0;
+            let expense = response.reduce((value, current, index, arr) => {
+                if (current.type === 1) {
+                    value = value + parseInt(current.amount);
+                }
+                else {
+                    value -= parseInt(current.amount);
+                }
+
+                return value;
+            }, initalValue);
+            setTotal(expense);
         }).catch(error => {
             console.log("Error occurred while fetching the expenses.");
             console.error(error);
@@ -51,7 +64,7 @@ const ExpenseListComponent = () => {
         <div className="layout-container__wrapper">
             <div className="flexbox flexbox-justify-between flexbox-align-baseline">
                 <h3>Expenses</h3>
-                <span className="pill info">INR 770</span>
+                <span className="pill info">INR {total || "NA"}</span>
             </div>
             <hr />
             <div className="layout-container__expenses">

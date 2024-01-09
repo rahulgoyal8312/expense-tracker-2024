@@ -17,7 +17,7 @@ const ExpenseListItemComponent = ({ data, ...rest }) => {
                 </div>
                 <div className="flexbox flexbox-align-center">
                     <h3 className="title">{data.title}</h3>
-                    <span className="type-pill">{data.type}</span>
+                    <span className="type-pill">{data.type === 1 ? "CREDIT" : "DEBIT"}</span>
                 </div>
             </div>
             <div className="flexbox flexbox-align-center">

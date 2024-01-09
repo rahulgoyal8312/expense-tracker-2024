@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchExpensesById } from "../../services/api";
 
 const ExpenseFormComponent = ({
     operation
 }) => {
 
     const params = useParams();
-    console.log("Expense ID: ", params.id);
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [amount, setAmount] = useState(1000);
+    const [amount, setAmount] = useState(0);
     const [date, setDate] = useState("");
     const [type, setType] = useState("");
 
@@ -46,7 +46,34 @@ const ExpenseFormComponent = ({
 
     // fetch expense by ID if ID exist and operation is EDIT
     // set the input fields with the incoming values
-    useEffect(() => {}, []);
+    useEffect(() => {
+        if (params && params.id) {
+            console.log(`MAKE AN API CALL TO FETCH THE DATA FOR EXPENSE ID: ${params.id}`);
+            fetchExpensesById(params.id)
+                .then(data => {
+                    console.log(data);
+                    const { title, description, date, amount, type, id } = data;
+                    setTitle(title);
+                    setDescription(description);
+                    setDate(date);
+                    setAmount(amount);
+                    setType(type);
+                })
+                .catch(error => {
+                    console.log(error);
+                    window.alert("Some error occurred!")
+                })
+        }
+
+        return () => {
+            console.log("Cleanup of Expense Form Component");
+            setTitle("");
+            setDescription("");
+            setAmount(0);
+            setDate("");
+            setType("");
+        }
+    }, [params]);
     
     return (
         <div className="layout-container__wrapper">
