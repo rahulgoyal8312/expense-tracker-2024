@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchExpensesById } from "../../services/api";
+import { fetchExpensesById, AddExpense } from "../../services/api";
 
 const ExpenseFormComponent = ({
     operation
@@ -31,7 +31,7 @@ const ExpenseFormComponent = ({
         setType(event.target.value);
     }
 
-    const handleFormSubmission = (event) => {
+    const handleFormSubmission = async (event) => {
         event.preventDefault();
 
         console.log({
@@ -41,7 +41,20 @@ const ExpenseFormComponent = ({
             amount,
             type
         })
-        alert("Form submitted, store the data!")
+        // alert("Form submitted, store the data!")
+        try {
+            let payload = {
+                title,
+                description,
+                date,
+                amount,
+                type
+            };
+            let response = await AddExpense(payload);
+            console.log(response);
+        } catch (error) {
+            alert("Some error occurred");
+        }
     }
 
     // fetch expense by ID if ID exist and operation is EDIT
