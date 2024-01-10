@@ -71,7 +71,7 @@ const ExpenseListComponent = () => {
             console.log("Item Deleted: ", response, id);
 
             let expenses = [...data];
-            let list = expenses.filter(e => e.id !== id);
+            let list = expenses.filter(e => e._id !== id);
             setData(list);
 
             // execute compute total again
@@ -106,7 +106,7 @@ const ExpenseListComponent = () => {
                         data.map((item, index) => {
                             return (
                                 <ExpenseListItemComponent
-                                    key={item.id}
+                                    key={item._id}
                                     data={item}
                                     handleDeleteOperation={handleDeleteOperation}
                                 />

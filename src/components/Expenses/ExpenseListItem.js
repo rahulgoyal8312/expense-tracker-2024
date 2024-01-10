@@ -26,10 +26,10 @@ const ExpenseListItemComponent = ({
             </div>
             <div className="flexbox flexbox-align-center">
                 <div className="pill">{data.amount} INR</div>
-                <button className="actions" onClick={() => navigate(`/edit-expense/${data.id}`)}>
+                <button className="actions" onClick={() => navigate(`/edit-expense/${data._id}`)}>
                     <span className="material-icons edit">edit</span>
                 </button>
-                <button className="actions" onClick={() => handleDeleteOperation(data.id)}>
+                <button className="actions" onClick={() => handleDeleteOperation(data._id)}>
                     <span className="material-icons delete">delete</span>
                 </button>
             </div>

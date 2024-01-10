@@ -83,7 +83,8 @@ export const UpdateExpense = async (id, payload) => {
         });
         
         if (!response.ok) {
-            console.log(`Request Failed with status: ${response.status}`)
+            // console.log(`Request Failed with status: ${response.status}`)
+            console.log("Request Failed with status: ", response.status)
             throw new Error("Some error occurred while updating");
         }
 
