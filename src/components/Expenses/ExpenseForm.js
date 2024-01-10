@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchExpensesById, AddExpense } from "../../services/api";
+import { fetchExpensesById, AddExpense, UpdateExpense } from "../../services/api";
 
 const ExpenseFormComponent = ({
     operation
@@ -50,8 +50,17 @@ const ExpenseFormComponent = ({
                 amount,
                 type
             };
-            let response = await AddExpense(payload);
-            console.log(response);
+
+            if (params && params.id) {
+                // update the expense
+                let response = await UpdateExpense(params.id, payload);
+                console.log("Updated Expense: ", response, payload)
+            }
+            else {
+                // add the expense
+                let response = await AddExpense(payload);
+                console.log("Added Expense: ", response, payload);
+            }
         } catch (error) {
             alert("Some error occurred");
         }

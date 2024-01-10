@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 const MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-const ExpenseListItemComponent = ({ data, ...rest }) => {
+const ExpenseListItemComponent = ({ 
+    data, 
+    handleDeleteOperation,
+    ...rest 
+}) => {
     const navigate = useNavigate();
     const date = new Date(data.date);
     const month = date.getMonth();
@@ -25,7 +29,7 @@ const ExpenseListItemComponent = ({ data, ...rest }) => {
                 <button className="actions" onClick={() => navigate(`/edit-expense/${data.id}`)}>
                     <span className="material-icons edit">edit</span>
                 </button>
-                <button className="actions" onClick={() => alert("Delete this Item")}>
+                <button className="actions" onClick={() => handleDeleteOperation(data.id)}>
                     <span className="material-icons delete">delete</span>
                 </button>
             </div>

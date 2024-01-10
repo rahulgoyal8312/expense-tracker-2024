@@ -71,4 +71,25 @@ export const DeleteExpense = async (id) => {
     }
 }
 
-export const UpdateExpense = async (id, payload) => {}
+export const UpdateExpense = async (id, payload) => {
+    // add code
+    try {
+        const response = await fetch(`${BASE_URL}expenses/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
+        
+        if (!response.ok) {
+            console.log(`Request Failed with status: ${response.status}`)
+            throw new Error("Some error occurred while updating");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error("Some error occurred");
+    }
+}
